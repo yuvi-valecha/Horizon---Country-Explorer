@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HORIZON</title>
+    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-orange-500 min-h-screen w-auto">
+    <header>
+        <div>
+            <div class="flex justify-around mt-7">
+                <div>
+                    <div class="text-xs tracking-widest text-amber-200 mb-1 md:mb-3 scale-y-150">THE WORLD ATLAS</div>
+                    <h1 class="text-4xl md:text-6xl text-yellow-300 font-serif font-extrabold">HO<span class="text-white">RIZ</span>ON</h1>
+                </div>
+                
+                <div class="text-amber-200">
+                   <div class="text-xs tracking-widest mb-2 md:mb-4 font-light scale-y-150">COUNTRY EXPLORER</div>
+                   <div class="text-xs tracking-widest flex justify-end text-yellow-200 scale-y-110" id="current-date"></div>
+                </div>
+            </div>
+            <div class="h-1 mt-2 md:mt-4 bg-linear-to-r from-transparent via-green-500  to-transparent w-full max-w-4xl  mx-auto "></div>
+            <div class="text-amber-200 text-sm w-full md:w-100 mt-3 mx-auto md:mx-70 px-4 font-mono">Explore nations, cultures and people of the world - Info, history and living traditions at a glance</div>
+        </div>
+    </header>
+    <div class="h-0.5 bg-green-400 mt-5"></div>
+    <main>
+        <section class="flex flex-col justify-center items-center mt-12">
+            <div>
+                <div class="flex justify-center ml-3">
+                    <input type="text" placeholder="Search a country..." class="text-2xl md:text-3xl p-3 w-full max-w-lg md:w-150 focus outline-none" id="search-bar">
+                    <div class="mr-2">
+                        <button class="bg-yellow-400 w-full md:w-auto text-sm py-3 px-5 mt-1 font-bold rounded-xl hover: cursor-pointer hover:bg-white hover:-translate-y-1 transition-all duration-300" id="search-btn">
+                            SEARCH
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="h-1 bg-black ml-3"></div>
+                <div class="flex justify-start mt-6 ml-3">
+                    <span class="mr-2 text-amber-300 tracking-widest md:text-2xl">REGION:</span>
+                    <div class="grid grid-cols-3 md:grid-cols-6 gap-2 gap-y-4">
+                        <!-- <p class="border border-amber-200 pl-6 py-0.5 md:pt-1 font-light tracking-widest scale-y-125 text-sm font-mono text-amber-200 hover:cursor-pointer hover:text-black hover:bg-amber-200 transition duration-300 filter-btn" data-region="">ALL</p> -->
+                        <p class="border border-amber-200 pl-4 py-0.5 md:pt-1 font-light tracking-widest scale-y-125 text-sm font-mono text-amber-200 hover:cursor-pointer hover:text-black hover:bg-amber-200 transition duration-300 filter-btn" data-region="africa">AFRICA</p>
+                        <p class="border border-amber-200 px-2 md:px-3 md:pt-1 py-0.5 font-light tracking-widest scale-y-125 text-sm font-mono text-amber-200 hover:cursor-pointer hover:text-black hover:bg-amber-200 transition duration-300 filter-btn" data-region="americas">AMERICAS</p>
+                        <p class="border border-amber-200 pl-5 py-0.5 md:pt-1 font-light tracking-widest scale-y-125 text-sm font-mono text-amber-200 hover:cursor-pointer hover:text-black hover:bg-amber-200 transition duration-300 filter-btn" data-region="asia">ASIA</p>
+                        <p class="border border-amber-200 pl-4 py-0.5 md:pt-1 font-light tracking-widest scale-y-125 text-sm font-mono text-amber-200 hover:cursor-pointer hover:text-black hover:bg-amber-200 transition duration-300 filter-btn" data-region="europe">EUROPE</p>
+                        <p class="border border-amber-200 px-2 md:px-3 py-0.5 md:pt-1 font-light tracking-widest scale-y-125 text-sm font-mono text-amber-200 hover:cursor-pointer hover:text-black hover:bg-amber-200 transition duration-300 filter-btn" data-region="oceania">OCEANIA</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-22 flex flex-col items-center" id="message">
+                <div class="text-3xl md:text-6xl text-green-500 font-[Dancing_Script] font-extrabold ">Begin Your Exploration</div>
+                <div class="mt-2 font-mono flex justify-center text-lg ml-5 text-green-300">
+                    <p>195 countries</p>
+                    <p class="md:mx-4 flex md:flex"> &middot </p>
+                    <p>Cultural Info</p>
+                    <p class="md:mx-4 flex md:flex">&middot</p>
+                    <p>Live Weather</p>
+                </div>
+            </div>
+            <div class="mt-22 flex-col items-center justify-center pl-6 hidden" id="empty-srch-bar-msg">
+                <div class="text-5xl text-red-700">
+                    <i class="fa-regular fa-circle-xmark"></i>
+                </div>
+                <div class="text-3xl md:text-6xl text-white font-[Dancing_Script] font-extrabold ">Please enter a country name to explore</div>
+            </div>
+
+            
+        </section>
+        <section>
+            <div id="after-search">
+                <div class="my-7 px-16" id="result-count">
+                    <!-- <span class="text-3xl text-indigo-600 font-bold font-serif">2 results</span>
+                    <span class="px-3 text-white text-2xl font-[Dancing_Script]">for "India"</span> -->
+                </div>
+                <div id="country-cards" class="flex flex-col items-center mx-4 md:grid md:grid-cols-4">
+                    <!-- <div class="my-3 bg-amber-200 ">
+                        <div>
+                            <img src="https://images.pexels.com/photos/3699921/pexels-photo-3699921.jpeg" alt="india" class="h-50 w-auto py-3 px-4">
+                        </div>
+                        <div class="py-3">
+                            <p id="country" class="text-2xl font-serif text-indigo-700 px-5">India</p>
+                            <p id="continent" class="text-green-800 font-bold px-5">Asia</p>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="hidden flex-col px-10 md:px-70 pb-10 mt-10" id="country-details">
+                <!-- <div>
+                    <div class="flex">
+                        <p class="px-4 py-1 tracking-widest border border-amber-200">Asia</p>
+                        <p class="mx-6 px-4 py-1 border border-amber-200">Southern Asia</p>
+                        <p class="px-4 py-1 border border-amber-200">IND</p>
+                    </div>
+                    <div class="my-4">
+                        <p class="text-5xl font-serif font-extrabold text-blue-600">India</p>
+                        <p class="text-2xl text-green-600 font-[Dancing_Script] font-extrabold my-2">Republic of India</p>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row bg-amber-300">
+                    <div>
+                        <img src="https://images.pexels.com/photos/3699921/pexels-photo-3699921.jpeg" class="h-full w-100" alt="flag">
+                    </div>
+                    <div>
+                        <div class="grid grid-cols-2 px-12 py-8 gap-y-6 gap-x-16">
+                            <div>
+                                <p class="text-green-600 tracking-widest font-bold text-xs">CAPITAL</p>
+                                <p class="text-white text-xl">New Delhi</p>
+                            </div>
+                            <div>
+                                <p class="text-green-600 tracking-widest font-bold text-xs">POPULATION</p>
+                                <p class="text-white text-xl">1,41,74,92,000</p>
+                            </div>
+                            <div>
+                                <p class="text-green-600 tracking-widest font-bold text-xs">AREA</p>
+                                <span class="text-white text-xl">32,87,263 <span>km<sup>2</sup></span></span>
+                            </div>
+                            <div>
+                                <p class="text-green-600 tracking-widest font-bold text-xs">CURRENCY</p>
+                                <p class="text-white text-xl">Indian Rupee</p>
+                            </div>
+                            <div>
+                                <p class="text-green-600 tracking-widest font-bold text-xs">LANGUAGES</p>
+                                <p class="text-white text-xl">English, Hindi, Tamil</p>
+                            </div>
+                            <div>
+                                <p class="text-green-600 tracking-widest font-bold text-xs">DRIVING SIDE</p>
+                                <p class="text-white text-xl">Left</p>
+                            </div>
+                            <div>
+                                <p class="text-green-600 tracking-widest font-bold text-xs">CALLING CODE</p>
+                                <p class="text-white text-xl">+91</p>
+                            </div>
+                            <div>
+                                <p class="text-green-600 tracking-widest font-bold text-xs">TIME ZONE</p>
+                                <p class="text-white text-xl">UTC + 05:30</p>
+                            </div>
+                            <div>
+                                <p class="text-green-600 tracking-widest font-bold text-xs">UN MEMBER</p>
+                                <p class="text-white text-xl">Yes</p>
+                            </div>
+                            <div>
+                                <p class="text-green-600 tracking-widest font-bold text-xs">LANDLOCKED</p>
+                                <p class="text-white text-xl">No</p>
+                            </div>
+                            <div>
+                                <p class="text-green-600 tracking-widest font-bold text-xs">BORDERING COUNTRIES</p>
+                                <div class="text-white text-xl">
+                                    <p>CHN</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </section>
+    </main>
+    <script src="./script.js"></script>
+</body>
+</html>
