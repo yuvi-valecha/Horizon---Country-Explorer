@@ -7,6 +7,7 @@ const countryCards = document.getElementById("country-cards")
 const filterBtns = document.querySelectorAll(".filter-btn")
 const countryDetails = document.getElementById("country-details")
 const currentDate = document.getElementById("current-date")
+const logo = document.getElementById("logo")
 console.log("hello")
 
 function setDate(){
@@ -32,6 +33,8 @@ async function search(){
         message.classList.remove("flex")
         emptySrchBarMsg.classList.remove("hidden")
         emptySrchBarMsg.classList.add("flex")
+        document.getElementById("after-search").classList.add("hidden")
+
         
     } else{
         try{
@@ -208,6 +211,16 @@ async function fetchAllCountries(){
     }
 }
 
+function logoClick(){
+    resetUI()
+    message.classList.add("flex")
+    message.classList.remove("hidden")
+    emptySrchBarMsg.classList.remove("flex")
+    emptySrchBarMsg.classList.add("hidden")
+    document.getElementById("after-search").classList.add("hidden")
+
+}
+
 
 filterBtns.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -222,5 +235,6 @@ filterBtns.forEach(btn => {
 })
 
 searchBtn.addEventListener('click', search)
+logo.addEventListener("click", logoClick)
 
 
